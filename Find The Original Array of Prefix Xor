@@ -1,6 +1,11 @@
 class Solution {
 public:
     vector<int> findArray(vector<int>& pref) {
+//         x ^y= z
+// => (x^y)^y =z^y 
+// => x^(y^y)=z^y (associative)
+// => x^0=z^y
+// => x=z^y
          vector<int> result(pref.size());
         result[0] = pref[0];
         for(int i = 1; i < pref.size(); i++) {
