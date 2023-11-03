@@ -1,0 +1,56 @@
+//print numbr which is single whereas rest all are thrice
+class Solution {
+
+public:
+    int singleNumber(vector<int>& nums) {
+//         int one, two;
+//         one = 0;
+//         two = 0;	
+// 		for(int i=0; i<nums.size(); i++){
+//             one = (one ^ nums[i]) & (~two);
+//             two = (two ^ nums[i]) & (~one);   
+//         }
+// //         Initialize 'ones' and 'twos' as 0.
+        
+// // Iterate through each number 'num' in the input vector 'nums'.
+
+// // Update 'ones' and 'twos' using bitwise operations:
+// // ones = (ones ^ num) & ~twos: XOR the current number 'num' with 'ones' to toggle the bits that appear once, then perform bitwise AND with the complement of 'twos' to remove the bits that appear twice.
+// // twos = (twos ^ num) & ~ones: XOR the current number 'num' with 'twos' to toggle the bits that appear twice, then perform bitwise AND with the complement of 'ones' to remove the bits that appear once.
+
+// // After iterating through all the numbers, the value stored in 'ones' will be the single number that appears only once.
+
+
+// // Return the value of 'ones' as the result.
+//         //Idea - "one" will keep a track of all the numbers which are encountered for the first time. And "two" will keep a track of all the numbers which are encountered for the second time. When a number is encountered for the third time, it nullifies it's effect on both "one" & "two" variables. 
+        
+//         //steps - 
+//         //initially "two" is 0. Which means in the step 1, there will be no effect of "& (~two)" statement because "~two" = 1 , and (1 & any number) = the number itself. Hence in step 1, only XOR operation will run untill no value is repeated.
+        
+//         //untill a repeated value is encountered, "two" will always remain 0.
+//         //When a repated value is encountered - 
+//         //eg. "one" was (x1 ^ x2 ^ x3 ..... ) so on. now suppose x2 got repeated. 
+//         //so, in step 1 : (x1 ^ x2 ^ x3 ..... ) ^ x2 will result in x2 being excluded from "one" because x2 ^ x2 = 0 , and 0 ^ (any number) = number itself.
+//         //now, in step 2, two is still zero. so "two" ^ arr[i] => 0^x2 => x2. And since we are doing "&" with negation of "one". And in the step 1, x2 is already excluded from "one", it'll be retained. 
+//         //There would be some values, but as we keep on encountering values the second time All the values which are currently in "one" will get excluded and get included in variable "two".
+        
+//     //For the third time, in step 1, "two" already has x2. hence, "& (~two)" (ie. AND with negation of "two") will not allow x2 to be included in "one". 
+        
+//         //In step 2, since, x2 is already there, XOR with x2 again will result in nullifying it's effect in variable "two" as well. Hence, x2 will be removed from both "one" & "two".
+        
+//         //Final outcome - since all no. are appearing thrice, all effect will nullify, and the only value remaining will be the one which has occured only once. Hence we return the value in variable "one".
+        
+//         return one;
+   int ans=0;
+        for(int i=0;i<32;i++){
+            int cSet=0,cUnset=0;
+            for(int j=0;j<nums.size();j++){
+               if((1<<i)&nums[j])    cSet++;
+               else cUnset++;
+            }
+            if(cSet%3)   
+                ans=ans|(1<<i);
+        }
+        return ans;
+    }
+};
