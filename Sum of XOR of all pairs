@@ -22,7 +22,10 @@ class Solution{
         {
             long set_bits = 0;
             long unset_bits = 0;
-            
+              //For each bit position,
+           // we calculate the contribution to the sum by multiplying the count of 1s
+          //  at that position with the count of 0s at that position.
+           // This tells us how many pairs at that bit position contribute 1 to the sum.
             long long int bit_checker = 1 << i;
             
             for (int idx = 0; idx < n; idx++)
